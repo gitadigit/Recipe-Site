@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Fragment } from "react";
 import IconButton from '@mui/material/IconButton';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import PrintIcon from '@mui/icons-material/Print';
 import '../style.css'
 
 const DetailsREcipe = () => {
@@ -14,7 +15,10 @@ const DetailsREcipe = () => {
     const buyFunction = (i) => {
         dispatch({ type: "ADD_SHOPPING", payload: i })
         naving("../s_get")
-    }
+    };
+    const handlePrint = () => {
+        window.print();
+    };
 
     const cardStyle = {
         display: "inline-block",
@@ -35,22 +39,25 @@ const DetailsREcipe = () => {
         marginBottom: "10px",
     };
 
+
+
+
     return <Fragment>
 
-        <h2>Details-Recipe</h2>
+        <h2>DetailsRecipe</h2>
         <div style={cardStyle} key={state?.Id}>
             <h3> {state?.Name}</h3>
             <img src={state?.Img} alt={state?.Name} style={imageStyle} />
-            <h4> דרגת קושי :{state?.Difficulty}</h4>
-            <h4> משך זמן : {state?.Duration}</h4>
+            <p> דרגת קושי :{state?.Difficulty}</p>
+            <p> משך זמן : {state?.Duration}</p>
             <div>
                 {state.Ingrident.map((i) => (
                     <div >
-                        <h4>  {i?.Name}: {i?.Count} {i?.Type}
+                        <p>  {i?.Name}: {i?.Count} {i?.Type}
                             <IconButton style={{ color: "white" }} aria-label="add to shopping cart" onClick={() => buyFunction(i)}>
                                 <AddShoppingCartIcon />
                             </IconButton>
-                        </h4>
+                        </p>
                     </div>
                 ))}
             </div>
@@ -60,7 +67,12 @@ const DetailsREcipe = () => {
                     <p> {i}</p>
                 ))}
                 {console.log("instructions", state.Instructions.i)}
+                <IconButton color="primary" size="large" onClick={handlePrint}>
+                     <PrintIcon />
+                   </IconButton>
             </div>
+
+
         </div>
     </Fragment>
 }

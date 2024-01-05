@@ -4,9 +4,9 @@ const HomePage = () => {
 
   const userName = useSelector(state => state?.user.Name);
 
-  return <div style={{color:"white"}}>
+  return <div style={{backgroundColo:"black"}}>
    
-   {<h1 > Hello {userName} WellCome</h1>} 
+   {<h1 > Hello {userName} WellCome </h1>} 
    
    <br></br>
    <br></br>

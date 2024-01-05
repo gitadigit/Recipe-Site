@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -39,7 +39,7 @@ const GetRecipes = () => {
 
     return (
         <Fragment>
-            <h2>Get-Recipes</h2>
+            <h2>GetRecipes</h2>
 
             <label>Category</label>
             <Select onChange={(i) => setCategoryId(i.target.value)}>
@@ -70,21 +70,20 @@ const GetRecipes = () => {
                 ))}
             </Select>
 
-            <Container>
-                {/* <h3>Get Recipes</h3> */}
+            <Container >
                 <Row>
                     {filteredRecipes.map((r) => (
                         <Col key={r.id} md={4} className="mb-4">
-                            <Card bg="dark" text="white">
+                            <Card bg="dark" text="white" margin="50px">
                                 <Card.Img variant="top" src={r.Img} style={imageStyle} />
                                 <Card.Body>
-                                    <Card.Title> {r.Name}</Card.Title>
+                                    <Card.Title> <h3>{r.Name}</h3></Card.Title>
                                     <div>
-                                        <Button variant="outline-dark" style={{ background: "black" ,color:"white",borderRadius:"5px white "}} className="w-100" onClick={() => nav(r)}>
-                                            Detail
+                                        <Button onClick={() => nav(r)} style={{ backgroundColor: "white",color:'black', borderRadius: '8px', }} variant="contained" >  Details
                                         </Button>
-                                        <br></br>
                                     </div>
+                                    <br></br>
+                                    <br></br>
                                 </Card.Body>
                             </Card>
                         </Col>

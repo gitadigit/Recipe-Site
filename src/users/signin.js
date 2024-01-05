@@ -5,10 +5,13 @@ import axios from "axios";
 import { Fragment } from "react"
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux";
-import '../style.css';
 import { Input } from '@mui/base/Input';
 import Button from '@mui/material-next/Button';
 import SendIcon from '@mui/icons-material/Send';
+import CardContent from '@mui/material/CardContent';
+import Card from '@mui/material/Card';
+import { CardTitle } from "react-bootstrap";
+import backgroundImage from "../image/headimg4.jpg";
 
 const schema = yup.object({
   Username: yup.string().min(2).max(15).required(),
@@ -21,8 +24,8 @@ const schema = yup.object({
 
 export default function Signin() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm({ 
-    resolver: yupResolver(schema) 
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema)
   });
 
   const dispatch = useDispatch();
@@ -74,31 +77,67 @@ export default function Signin() {
   }
 
   return <Fragment>
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+      width: "100vw",
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
 
-    <h3>Signin</h3>
-    <form onSubmit={handleSubmit(onSubmit)}>
+    }}>
 
-      <Input {...register("Username")} placeholder="Enter your username " />
-      <p>{errors.Username?.message}</p>
+      <form onSubmit={handleSubmit(onSubmit)}>
 
-      <Input type={"password"}{...register("Password")} placeholder="Enter your password" />
-      <p>{errors.Password?.message}</p>
+        <Card
+          sx={{
+            color: 'white',
+            padding: '1rem',
+            borderRadius: '8px',
+            width: "40vw",
+            background: 'rgba(0, 0, 0, 0.7)'
+            ,
+          }}>
+          <CardTitle ><h2>Signin</h2></CardTitle>
+          <CardContent style={{ width: "100%", padding: "0.5rem" }}>
+            <label>Username</label>
+            <Input {...register("Username")} />
+            <p>{errors.Username?.message}</p>
 
-      <Input {...register("Name")} placeholder="Enter your name" />
-      <p>{errors.Name?.message}</p>
+            <label>Password</label>
+            <Input type={"password"}{...register("Password")} />
+            <p>{errors.Password?.message}</p>
 
-      <Input {...register("Phone")} placeholder="Enter your phone" />
-      <p>{errors.Phone?.message}</p>
+            <label>Name</label>
+            <Input {...register("Name")} />
+            <p>{errors.Name?.message}</p>
 
-      <Input {...register("Email")} placeholder="Enter your email" />
-      <p>{errors.Email?.message}</p>
+            <label>Phone</label>
+            <Input {...register("Phone")} />
+            <p>{errors.Phone?.message}</p>
 
-      <Input {...register("Tz")} placeholder="Enter your tz" />
-      <p>{errors.Tz?.message}</p>
+            <label>Email</label>
+            <Input {...register("Email")} />
+            <p>{errors.Email?.message}</p>
 
-      <Button type="submit" style={{ backgroundColor: "red" }} variant="contained" endIcon={<SendIcon />} >  Send
-      </Button>
-    </form>
+            <label>TZ</label>
+            <Input {...register("Tz")} />
+            <p>{errors.Tz?.message}</p>
 
+          </CardContent>
+          <Button type="submit" style={{ backgroundColor: "red" }} variant="contained" endIcon={<SendIcon />} >  Send
+          </Button>
+        </Card>
+      </form>
+    </div> <h4 style={{
+      background: 'white',
+      color: "black",
+      padding: '1rem',
+      bottom: 0,
+      width: '100%',
+    }}>
+      &#169; Adi Malka 0534184863</h4>
   </Fragment>
 };

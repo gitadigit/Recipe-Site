@@ -103,36 +103,37 @@ export default function AddRecipes() {
 
   return (
     <Fragment>
-      <h3>Add-Recipes</h3>
+      <h2>AddRecipes</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
 
         <label>Enter recipes name</label>
-        <Input {...register("Name")} slot="text" defaultValue={state ? state.Name : "Enter recipes name"} />
+        <Input {...register("Name")} slot="text" defaultValue={state ? state.Name : null} />
         <p>{errors.Name?.message}</p>
 
         <label>Enter recipes categoryId</label>
-        <Input {...register("CategoryId")} defaultValue={state ? state.CategoryId : "Enter recipes categoryId"} />
+        <Input {...register("CategoryId")} defaultValue={state ? state.CategoryId : null} />
         <p>{errors.CategoryId?.message}</p>
 
         <label>Enter recipes Img</label>
-        <Input {...register("Img")} defaultValue={state ? state.Img : "Enter recipes Img"} />
+        <Input {...register("Img")} defaultValue={state ? state.Img : null} />
         <p>{errors.Img?.message}</p>
 
         <label>Enter recipes duration</label>
-        <Input {...register("Duration")} defaultValue={state ? state?.Duration : "Enter recipes duration"} />
+        <Input {...register("Duration")} defaultValue={state ? state?.Duration : null} />
         <p>{errors.Duration?.message}</p>
 
         <label>Enter recipes Difficulty</label>
-        <Input {...register("Difficulty")} defaultValue={state ? state?.Difficulty : "Enter recipes Difficulty"} />
+        <Input {...register("Difficulty")} defaultValue={state ? state?.Difficulty : null} />
         <p>{errors.Difficulty?.message}</p>
 
         <label>Enter recipes Description</label>
-        <Input {...register("Description")} defaultValue={state ? state?.Description : "Enter recipes Description"} />
+        <Input {...register("Description")} defaultValue={state ? state?.Description : null} />
         <p>{errors.Description?.message}</p>
 
         {fieldsIngrident.map((field, index) => (
           <>
             <hr />
+            <label>Prodect</label>
             <label>Name</label>
             <Input {...register(`Ingrident.${index}.Name`)} defaultValue={state ? state?.Duration : "Name"} />
             <p>{errors.Ingrident?.[index]?.count?.message}</p>
@@ -161,8 +162,7 @@ export default function AddRecipes() {
         ))}
         <button onClick={() => appendInstructions({})}> AddInstructions</button>
         <hr />
-          <Button type="submit" style={{ backgroundColor: "red" }} variant="contained" endIcon={<SendIcon />} >  Send
-
+        <Button type="submit" style={{ backgroundColor: "red", borderRadius: '8px', }} variant="contained" endIcon={<SendIcon />} >  Send
         </Button>
 
       </form>

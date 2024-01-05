@@ -69,7 +69,7 @@ const GetShopping = () => {
           ))}
         </tbody>
       </table>
-      <Button onClick={() => nav_add()} style={{ backgroundColor: "red" }} variant="contained" >  AddProdect
+      <Button onClick={() => nav_add()} style={{ backgroundColor: "red",borderRadius: '8px',  }} variant="contained" >  AddProdect
       </Button>
     </Fragment>
   );

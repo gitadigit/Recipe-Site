@@ -8,7 +8,10 @@ import { useDispatch } from "react-redux";
 import SendIcon from '@mui/icons-material/Send';
 import { Button } from '@mui/material';
 import { Input } from '@mui/base/Input';
-import '../style.css'
+import CardContent from '@mui/material/CardContent';
+import Card from '@mui/material/Card';
+import { CardTitle } from "react-bootstrap";
+import backgroundImage from "../image/headimg4.jpg";
 
 const schema = yup.object({
   Username: yup.string().min(2).max(15).required(),
@@ -68,23 +71,52 @@ export default function Login() {
       )
   }
 
-  return <Fragment>
-
-    <h2>Login</h2>
+  return <Fragment >
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+      width: "100vw",
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+     
+    }}>
 
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>Username</label>
-      <Input {...register("Username")} />
-      <p>{errors.Username?.message}</p>
+      <Card
+        sx={{
+          color: 'white',
+          padding: '1rem',
+          borderRadius: '8px',
+          width:"30vw",
+          background: 'rgba(0, 0, 0, 0.7)'
+          ,
+        }}>
+        <CardTitle ><h2>Login</h2></CardTitle>
+        <CardContent>
+          <label>Username</label>
+          <Input {...register("Username")} style={{ width: "100%", padding: "0.5rem" }} />
+          <p>{errors.Username?.message}</p>
 
-      <label>Password</label>
-      <Input type={"password"} {...register("Password")} />
-      <p>{errors.Password?.message}</p>
-
-      {/* // placeholder="Enter your password" /> */}
-      <Button type="submit" style={{ backgroundColor: "red" }} variant="contained" endIcon={<SendIcon />} >  Send
-      </Button>
+          <label>Password</label>
+          <Input type={"password"} {...register("Password")} style={{ width: "100%", padding: "0.5rem" }} />
+          <p>{errors.Password?.message}</p>
+        </CardContent>
+        {/* // placeholder="Enter your password" /> */}
+        <Button type="submit" style={{ backgroundColor: "red" }} variant="contained" endIcon={<SendIcon />} >  Send
+        </Button>
+      </Card>
     </form>
+    </div>
+    <h4  style={{  
+    background: 'white',
+    color:"black",
+     padding: '1rem',
+     bottom: 0,
+     width: '100%', }}>
+        &#169; Adi Malka 0534184863</h4>
 
   </Fragment >
 };

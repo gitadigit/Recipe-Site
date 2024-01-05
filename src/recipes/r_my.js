@@ -40,15 +40,15 @@ const MyRecipe = () => {
     }
 
     const cardStyle = {
-        display: "black",
-        width: "30%",
-        margin: "10px",
-        padding: "20px",
+        display: "block",
+        width: "20%",
+        margin: "10px auto", // Added "auto" to center horizontally
+        padding: "30px",
         background: "black",
         color: "white",
         border: "1px solid white",
         borderRadius: "10px",
-        textAlign: "center",
+        textAlign: "center", // Added to center content verti
     };
 
     const imageStyle = {
@@ -61,22 +61,22 @@ const MyRecipe = () => {
 
     return (
         <Fragment>
-            <h2>My-Recipe</h2>
+            <h2>MyRecipe</h2>
             {myRecipes?.map(m => (
                 m.UserId === myId ? (
                     <div style={cardStyle} key={m.Id}>
                         <h3>{m.Name}</h3>
                         <img src={m.Img} alt={m.Name} style={imageStyle} />
-                        <h4> דרגת קושי :{m.Difficulty}</h4>
-                        <h4> משך זמן : {m.Duration}</h4>
+                        <p> דרגת קושי :{m.Difficulty}</p>
+                        <p> משך זמן : {m.Duration} דקות</p>
                         <div>
                             {m.Ingrident.map((i) => (
                                 <div key="">
-                                    <h4>  {i?.Name}: {i?.Count} {i?.Type}
+                                    <p>  {i?.Name}: {i?.Count} {i?.Type}
                                         <IconButton style={{ color: "white" }} aria-label="add to shopping cart" onClick={() => nav_add(i)}>
                                             <AddShoppingCartIcon />
                                         </IconButton>
-                                    </h4>
+                                    </p>
                                 </div>
                             ))}
                         </div>

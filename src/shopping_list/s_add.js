@@ -58,7 +58,9 @@ export default function AddShopping() {
   }
 
   return (<Fragment>
-    <h2>Add/Edit-Shopping</h2>
+    <h2>AddShopping</h2>
+<br></br>
+<br></br>
 
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>Name</label>
@@ -68,7 +70,7 @@ export default function AddShopping() {
       <label>Count</label>
       <Input {...register("Count")} defaultValue={state ? state.Count : null} />
       <p>{errors.Count?.message}</p>
-        <Button type="submit" style={{ backgroundColor: "red" }} variant="contained" endIcon={<SendIcon />} >  Send
+        <Button type="submit" style={{ backgroundColor: "red" ,borderRadius: '8px', }} variant="contained" endIcon={<SendIcon />} >  Send
         </Button>
 
     </form>

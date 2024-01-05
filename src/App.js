@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <Header></Header>
       <Routes>
-        <Route path='/' element={<Login />} />
+        {/* <Route path='/' element={<Login/>} /> */}
         <Route path='/signin' element={<Signin />} />
         <Route path='/login' element={<Login/>} />
         <Route path='/homePage' element={<HomePage />} />
@@ -36,7 +36,15 @@ function App() {
         <Route path='/s_add' element={<AddShopping />} />
 
       </Routes>
-      <h5> כל הזכויות שמורות אסתי ריקי עדי</h5>
+     
+     
+     
+     
+     
+     
+     
+     
+     
     </div>
   );
 }

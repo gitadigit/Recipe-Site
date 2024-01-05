@@ -36,15 +36,18 @@ export default function AddCategory() {
 
   return <Fragment>
 
-    <h2>Add-Category</h2>
+    <h3>AddCategory</h3>
+    <br></br>
+    <br></br>
     <form onSubmit={handleSubmit(onSubmit)}>
 
-      <label>Name</label>
-      <Input {...register("Name")} placeholder="enter name category" />
+      <label>Name Category</label>
+      <Input {...register("Name")}/>
       <p>{errors.Name?.message}</p>
 
-      <Button type="submit" style={{ backgroundColor: "gray" }} variant="contained" endIcon={<SendIcon />} >  Send
+      <Button type="submit" style={{ backgroundColor: "red" ,borderRadius: '8px',  }} variant="contained" endIcon={<SendIcon />} >  Send
       </Button>
+
     </form>
   </Fragment>
 }
