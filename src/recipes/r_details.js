@@ -14,7 +14,7 @@ const DetailsREcipe = () => {
 
     const buyFunction = (i) => {
         dispatch({ type: "ADD_SHOPPING", payload: i })
-        naving("../s_get")
+        naving("/s_get")
     };
     const handlePrint = () => {
         window.print();
@@ -63,10 +63,10 @@ const DetailsREcipe = () => {
             </div>
             <div>
                 <h5 >: אופן ההכנה </h5>
-                {state?.Instructions.map((i) => (
-                    <p> {i}</p>
+                {state?.Instructions.map((i,index) => (
+                    <p key={index}> {i.Instruction}</p>
                 ))}
-                {console.log("instructions", state.Instructions.i)}
+                {console.log("instructions", state.Instructions)}
                 <IconButton color="primary" size="large" onClick={handlePrint}>
                      <PrintIcon />
                    </IconButton>

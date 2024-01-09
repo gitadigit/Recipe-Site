@@ -18,7 +18,7 @@ const schema = yup.object({
   Duration: yup.string().required(),
   Difficulty: yup.number().positive().integer().required(),
   Description: yup.string().required(),
-  Ingrident: yup.array().of(
+  IngridentArray: yup.array().of(
     yup.object().shape({
       Name: yup.string().required(),
       Count: yup.number().required(),
@@ -45,7 +45,7 @@ export default function AddRecipes() {
   });
   const { fields: fieldsIngrident, append: appendIngrident, remove: removeIngrident } = useFieldArray({
     control, // control props comes from useForm (optional: if you are using FormContext)
-    name: "Ingrident", // unique name for your Field Array
+    name: "IngridentArray", // unique name for your Field Array
   });
   const { fields: fieldsInstuctions, append: appendInstructions, remove: removeInstructions } = useFieldArray({
     control,
@@ -64,7 +64,7 @@ export default function AddRecipes() {
         Duration: data.Duration,
         Difficulty: data.Difficulty,
         Description: data.Description,
-        Ingrident: data.Ingrident,
+        Ingrident: data.IngridentArray,
         Instructions: data.InstructionsArray
       }
       axios.post("http://localhost:8080/api/recipe/edit", recipe)
@@ -86,7 +86,7 @@ export default function AddRecipes() {
         Duration: data.Duration,
         Difficulty: data.Difficulty,
         Description: data.Description,
-        Ingrident: data.Ingrident,
+        Ingrident: data.IngridentArray,
         Instructions: data.InstructionsArray
       }
       axios.post('http://localhost:8080/api/recipe', recipie)
@@ -135,33 +135,35 @@ export default function AddRecipes() {
             <hr />
             <label>Prodect</label>
             <label>Name</label>
-            <Input {...register(`Ingrident.${index}.Name`)} defaultValue={state ? state?.Duration : "Name"} />
-            <p>{errors.Ingrident?.[index]?.count?.message}</p>
+            {console.log(state?.Ingrident[index].Type)}
+            <Input {...register(`IngridentArray.${index}.Name`)} defaultValue={state ? state.Ingrident[index].Name : null} />
+            <p>{errors.IngridentArray?.[index]?.count?.message}</p>
 
             <label>Count</label>
-            <Input {...register(`Ingrident.${index}.Count`)} defaultValue={state ? state?.Duration : "Count"} />
-            <p>{errors.Ingrident?.[index]?.Count?.message}</p>
+            <Input {...register(`IngridentArray.${index}.Count`)} defaultValue={state ? state.Ingrident[index].Count : null} />
+            <p>{errors.IngridentArray?.[index]?.Count?.message}</p>
 
             <label>Type</label>
-            <Input {...register(`Ingrident.${index}.Type`)} defaultValue={state ? state?.Duration : "Type"} />
-            <p>{errors.Ingrident?.[index]?.Type?.message}</p>
+            <Input {...register(`IngridentArray.${index}.Type`)} defaultValue={state ? state.Ingrident[index].Type : null} />
+            <p>{errors.IngridentArray?.[index]?.Type?.message}</p>
 
             <button onClick={() => removeIngrident(index)}> DeleteProduct</button>
           </>
         ))}
-        <button onClick={() => appendIngrident({})}> AddProduct</button>
+        <button type="button" onClick={() => appendIngrident({})}> AddProduct</button>
         <hr />
         {fieldsInstuctions.map((field, index) => (
           <>
             <label>Instructions</label>
-            <Input {...register(`InstructionsArray.${index}.Instruction`)} defaultValue={state ? state?.Duration : "Instructions"} />
+            <Input {...register(`InstructionsArray.${index}.Instruction`)} defaultValue={state ? state?.Instructions[index] : null} />
             <p>{errors.InstructionsArray?.[index]?.InstructionsArray?.message}</p>
 
             <button onClick={() => removeInstructions(index)}> RemovevInstructions</button>
           </>
         ))}
-        <button onClick={() => appendInstructions({})}> AddInstructions</button>
+        <button type="button" onClick={() => appendInstructions({})}> AddInstructions</button>
         <hr />
+
         <Button type="submit" style={{ backgroundColor: "red", borderRadius: '8px', }} variant="contained" endIcon={<SendIcon />} >  Send
         </Button>
 
