@@ -64,13 +64,13 @@ const DetailsREcipe = () => {
             <div>
                 <h5 >: אופן ההכנה </h5>
                 {state?.Instructions.map((i,index) => (
-                    <p key={index}> {i.Instruction}</p>
+                    <p key={index}> {i}</p>
                 ))}
                 {console.log("instructions", state.Instructions)}
-                <IconButton color="primary" size="large" onClick={handlePrint}>
-                     <PrintIcon />
-                   </IconButton>
             </div>
+            <IconButton color="primary" size="large" onClick={handlePrint}>
+      <PrintIcon />
+    </IconButton>
 
 
         </div>

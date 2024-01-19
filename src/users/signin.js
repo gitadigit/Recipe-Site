@@ -127,7 +127,7 @@ export default function Signin() {
             <p>{errors.Tz?.message}</p>
 
           </CardContent>
-          <Button type="submit" style={{ backgroundColor: "red" }} variant="contained" endIcon={<SendIcon />} >  Send
+          <Button type="submit" style={{ backgroundColor: "red",borderRadius:"8px" }} variant="contained" endIcon={<SendIcon />} >  Send
           </Button>
         </Card>
       </form>
